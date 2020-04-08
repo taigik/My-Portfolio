@@ -1,24 +1,26 @@
-# README
+## 使い方
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリケーションを動かす場合は、まずはリポジトリを手元にクローンしてください。
+その後、次のコマンドで必要になる RubyGems をインストールします。
 
-Things you may want to cover:
+```
+$ bundle install --without production
+```
 
-* Ruby version
+その後、データベースへのマイグレーションを実行します。
 
-* System dependencies
+```
+$ rails db:migrate
+```
 
-* Configuration
+最後に、テストを実行してうまく動いているかどうか確認してください。
 
-* Database creation
+```
+$ rails test
+```
 
-* Database initialization
+テストが無事に通ったら、Railsサーバーを立ち上げる準備が整っているはずです。
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails server
+```
