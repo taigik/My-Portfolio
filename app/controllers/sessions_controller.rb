@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       log_in @user
       # remember_meがオンのとき'1'、オフのとき'0'
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to @user
+      # 記憶したURL (もしくはデフォルト値) にログイン後にリダイレクト
+      redirect_back_or @user
     else
       # ログイン失敗:エラーメッセージを作成する
       flash.now[:danger] = 'メールかパスワードが正しくありません'

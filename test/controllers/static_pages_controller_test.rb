@@ -4,6 +4,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @base_title = "Ruby on Rails Tutorial Sample App"
+    @user = users(:example)
   end
 
   # rootのテスト
@@ -40,11 +41,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "Contact | #{@base_title}"
   end
 
-
-
-
-
-
-
+  # ログインしているユーザーをマイプロフィールページへ
+  test "should redirect root when logged in" do
+    log_in_as(@user)
+    get root_path
+    assert_redirected_to user_url(@user)
+  end
 
 end

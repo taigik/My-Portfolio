@@ -14,9 +14,11 @@ gem 'jquery-rails', '~> 4.3'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 gem 'rails-i18n'    # エラーの日本語化
-
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
