@@ -5,11 +5,13 @@ class SessionsController < ApplicationController
 
   # ログイン
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
       # ログイン成功:ユーザーログイン後にユーザー情報のページにリダイレクトする
-      log_in user
-      redirect_to user
+      log_in @user
+      # remember_meがオンのとき'1'、オフのとき'0'
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      redirect_to @user
     else
       # ログイン失敗:エラーメッセージを作成する
       flash.now[:danger] = 'メールかパスワードが正しくありません'
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
 
   # ログアウト
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 end
