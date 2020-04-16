@@ -1,0 +1,14 @@
+<!--# HTMLメール用-->
+
+<p> <%= @user.name %> 様</p>
+
+<p>サービスをご利用いただきありがとうございます。</p>
+
+<p>新規アカウント作成を承りました。</p>
+
+<p>以下のURLからアカウントを有効化してください。</p>
+<%= link_to "アカウントの有効化", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+<p>※本メールに心当たりがない方は無視してください。</p>
+
+<p>株式会社</p>

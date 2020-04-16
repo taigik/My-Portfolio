@@ -31,8 +31,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Userメイラープレビュー
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = '192.168.33.10:3000'       # ローカル仮想環境
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
 
   config.action_mailer.perform_caching = false
 
