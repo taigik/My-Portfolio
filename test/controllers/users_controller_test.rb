@@ -5,6 +5,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:example)
     @other_user = users(:example2)
+    @non_activated_user = users(:non_activated)
   end
 
   # アカウント作成ページ
@@ -68,5 +69,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete user_path(@user)
     end
     assert_redirected_to root_path
+  end
+
+  # 有効化されていないユーザー
+  test "should not allow the not activated attribute" do
+    log_in_as(@non_activated_user)
+    assert_not @non_activated_user.activated?
+    get users_path
+    assert_select "a[href=?]", user_path(@non_activated_user), count: 0
+    get user_path(@non_activated_user)
+    assert_redirected_to root_url
   end
 end
