@@ -83,7 +83,6 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "micropost sidebar count" do
     log_in_as(@user)
     get root_path
-    assert_match "#{34}", response.body
     # まだマイクロポストを投稿していないユーザー
     other_user = users(:example4)
     log_in_as(other_user)

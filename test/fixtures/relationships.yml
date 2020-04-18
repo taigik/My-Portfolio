@@ -1,0 +1,16 @@
+# followerがfollowedをフォロー
+one:
+  follower: example
+  followed: example3
+
+two:
+  follower: example
+  followed: example4
+
+three:
+  follower: example3
+  followed: example
+
+four:
+  follower: example2
+  followed: example

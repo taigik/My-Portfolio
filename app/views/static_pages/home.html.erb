@@ -2,7 +2,7 @@
 <% provide(:button_text, "投稿") %>
 
 <% if logged_in? %>
-  <%= render 'shared/micropost_post' %>
+  <%= render 'static_pages/timeline' %>
 <% else %>
   <%= render 'top' %>
 <% end %>
