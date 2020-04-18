@@ -1,5 +1,6 @@
 <li>
-  <%= gravatar_for user, size: 50 %>
+  <% @user = user %>
+  <%= render 'shared/img' %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     <%= button_to "削除", user, method: :delete, class: 'btn' %>

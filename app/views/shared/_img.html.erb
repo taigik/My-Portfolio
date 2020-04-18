@@ -1,0 +1,5 @@
+<% if @user.picture? %>
+  <%= link_to image_tag(@user.picture.url, size: 50), @user %>
+<% else %>
+  <%= link_to image_tag('default.jpg', size: 50), @user %>
+<% end %>

@@ -1,3 +1,6 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= link_to current_user.name, current_user %></h1>
-<span><%= pluralize(current_user.microposts.count, "の投稿") %></span>
+<h1>
+<% @user = current_user %>
+<%= render 'shared/img' %>
+<%= link_to @user.name, @user %>
+</h1>
+<span><%= pluralize(@user.microposts.count, "の投稿") %></span>
