@@ -1,7 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <% logged_in? ? @path=current_user : @path=root_path %>
-    <%= link_to "sample app", @path, id: "logo" %>
+    <%= link_to "my app", root_path, id: "logo" %>
     <%= render 'layouts/nav' %>
   </div>
 </header>

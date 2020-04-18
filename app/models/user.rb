@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
+  mount_uploader :picture, PictureUploader
   attr_accessor :remember_token, :activation_token, :reset_token  # 仮のものを取得
   before_save :downcase_email
   before_create :create_activation_digest
@@ -9,6 +11,7 @@ class User < ApplicationRecord
                   uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate  :picture_size
 
   class << self
     # 渡された文字列のハッシュ値を返す:BCryptによって長さ60の文字列
@@ -66,6 +69,11 @@ class User < ApplicationRecord
   # パスワード再設定の期限が切れている場合はtrueを返す
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # 試作feedの定義
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private

@@ -14,11 +14,17 @@ gem 'jquery-rails', '~> 4.3'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faker'
+gem 'faker'         # 文字列生成
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# バージョンが合わないとうまくいかない
+gem 'carrierwave',             '1.1.0'   # 画像アップローダー
+gem 'mini_magick',             '4.7.0'   # 画像をリサイズ
+gem 'fog',                     '1.40.0'  # 本番環境で画像をアップロード
+
 gem 'rails-i18n'    # エラーの日本語化
+gem 'rename'    # アプリ名変更
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'

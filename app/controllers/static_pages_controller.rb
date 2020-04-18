@@ -1,7 +1,11 @@
 class StaticPagesController < ApplicationController
-  before_action :not_logged_in_user, only: [:home]
 
   def home
+    if logged_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
+
   end
 
   def help
@@ -12,9 +16,4 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
-
-  private
-    def not_logged_in_user
-      redirect_to user_url(current_user) if logged_in?
-    end
 end

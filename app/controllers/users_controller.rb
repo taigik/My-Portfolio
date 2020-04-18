@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  protect_from_forgery :except => [:destroy]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy]
@@ -8,9 +9,10 @@ class UsersController < ApplicationController
     @users = User.where(activated: true).paginate(page: params[:page])
   end
 
-  # ユーザープロフィールページ
+  # ユーザープロフィールページ + マイクロポスト
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
   end
 
@@ -58,20 +60,13 @@ class UsersController < ApplicationController
 
   # Strong Parameters
   private
+
     # ユーザーに許可するパラメータ
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
     end
 
     # beforeアクション
-
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        redirect_to login_url
-      end
-    end
 
     # 正しいユーザーかどうか確認
     def correct_user

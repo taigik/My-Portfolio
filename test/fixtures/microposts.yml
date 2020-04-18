@@ -1,0 +1,53 @@
+orange:
+  user: example
+  content: "This is an orange!"
+  created_at: <%= 10.minutes.ago %>
+
+apple:
+  user: example
+  content: "This is an apple!"
+  created_at: <%= 3.years.ago %>
+
+grape:
+  user: example
+  content: "This is a grape!"
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  user: example
+  content: "This is the most recent content"
+  created_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: example
+<% end %>
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 45.days.ago %>
+  user: example2
+<% end %>
+
+ants:
+  content: "Oh, is that what you want? Because that's how you get ants!"
+  created_at: <%= 2.years.ago %>
+  user: example3
+
+zone:
+  content: "Danger zone!"
+  created_at: <%= 3.days.ago %>
+  user: example3
+
+tone:
+  content: "I'm sorry. Your words made sense, but your sarcastic tone did not."
+  created_at: <%= 10.minutes.ago %>
+  user: example4
+
+van:
+  content: "Dude, this van's, like, rolling probable cause."
+  created_at: <%= 4.hours.ago %>
+  user: example4

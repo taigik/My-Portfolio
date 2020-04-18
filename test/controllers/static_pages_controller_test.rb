@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @base_title = "Ruby on Rails Tutorial Sample App"
+    @base_title = "My App"
     @user = users(:example)
   end
 
@@ -41,11 +41,10 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "Contact | #{@base_title}"
   end
 
-  # ログインしているユーザーをマイプロフィールページへ
+  # ログインしたユーザーをマイページへ
   test "should redirect root when logged in" do
     log_in_as(@user)
     get root_path
-    assert_redirected_to user_url(@user)
+    assert_response :success
   end
-
 end
