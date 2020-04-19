@@ -235,14 +235,20 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
-    .btn {
+    .follow_form {
+      width: 120px;
+      font-size: 5px;
+      padding: 5px;
+      margin: 5px 0;
+    }
+    .delete-btn {
       float: right;
       font-weight: bold;
       width: auto;
       font-size: 10px;
       padding: 5px;
       margin: 5px;
-      background-color: rgb(161, 178, 196);
+      background-color: rgb(188, 194, 201);
       &:hover {
         opacity: 0.8;
         color: blue;
@@ -310,4 +316,9 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+.follow_form {
+  width: 120px;
+  padding: 0;
 }

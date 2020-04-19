@@ -2,7 +2,10 @@
   <% @user = user %>
   <%= render 'shared/img' %>
   <%= link_to user.name, user %>
+  <section class="follow_form">
+    <%= render 'follow_form' if logged_in? %>
+  </section>
   <% if current_user.admin? && !current_user?(user) %>
-    <%= button_to "削除", user, method: :delete, class: 'btn' %>
+    <%= button_to "削除", user, method: :delete, class: 'delete-btn' %>
   <% end %>
 </li>
